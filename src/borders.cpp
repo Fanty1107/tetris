@@ -12,6 +12,3 @@ void Borders::draw(){
     DrawRectangleRec(left, RED);
     DrawRectangleRec(right, RED);
 }
-void draw_borders(Borders *b){
-}
-

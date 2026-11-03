@@ -1,11 +1,9 @@
 #include "../include/blocks.hpp"
 
-void draw_hero(Piece *p){
+//    Rectangle blocks[4];
+//    std::vector<Rectangle[4]> piece;
 
-}
-Piece init_blocks(){
-    Piece hero = {};
-    
-
-    return hero;
-}
+Piece::Piece(){}
+void Piece::draw(){}
+void Piece::update_pos(){}
+void Piece::check_collision(){}
