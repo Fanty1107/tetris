@@ -6,12 +6,12 @@
 #define W_HEIGHT 900
 #define TITLE "Tetris"
 
-typedef struct{
+struct Borders{
+    Borders();
     Rectangle top;
     Rectangle bottom;
     Rectangle left;
     Rectangle right;
-}Borders;
-Borders initBorders();
-void draw_borders(Borders *b);
+    void draw();
+};
 #endif

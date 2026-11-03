@@ -1,13 +1,13 @@
-#include "../include/borders.h"
+#include "../include/borders.hpp"
 
 int main(){
     InitWindow(W_WIDTH, W_HEIGHT, TITLE);
-    Borders bors = initBorders();
+    Borders borders; 
 
     while(!WindowShouldClose()){
     BeginDrawing();
         ClearBackground(RAYWHITE);
-        draw_borders(&bors);
+        borders.draw();
     EndDrawing();
     }
     CloseWindow();
