@@ -2,9 +2,9 @@
 #define BORDERS_H
 
 #include <raylib.h>
-#define W_WIDTH 600
-#define W_HEIGHT 900
-#define TITLE "Tetris"
+constexpr const char* TITLE = "Tetris";
+constexpr const int W_WIDTH = 600;
+constexpr const int W_HEIGHT = 900;
 
 struct Borders{
     Borders();
