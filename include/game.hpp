@@ -8,8 +8,10 @@
 struct Game{
     Window *win;
     Borders *bor;
-    std::vector<Piece> *p;
+    std::vector<Piece> *pic;
 
+    Game();
+    Game(Window *w, Borders *b, std::vector<Piece> *p);
     void spawn_pieces();
 };
 
