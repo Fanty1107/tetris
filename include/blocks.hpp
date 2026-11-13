@@ -1,6 +1,7 @@
 #ifndef BLOCKS_H
 #define BLOCKS_H
 
+#include "window.hpp"
 #include <raylib.h>
 
 constexpr float BLOCK_SIZE = 30;
@@ -22,10 +23,12 @@ struct Piece{
     Piece(Types::Piece tp);
     Rectangle blocks[4];
     Types::Piece type;
+    float speed;
 
     void draw();
     void draw_blocks();
-    void update_pos();
+    float rand_on_grid();
+    void update_pos(float dt, Window *w);
     void check_collision();
 };
 

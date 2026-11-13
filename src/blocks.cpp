@@ -4,18 +4,12 @@
 //Window is 650x900 all borders are 50px
 //600x850 for the actual game
 //each piece is 30
-Piece::Piece(){
-    float x = 90.0f;
-    float y = 90.0f;
-    Rectangle rec_b = {x, y, BLOCK_SIZE, BLOCK_SIZE};
-    for(int i = 0; i < 4; i++){
-        blocks[i] = {x, y, BLOCK_SIZE, BLOCK_SIZE};
-        x += BLOCK_SIZE;
-    }
-}
+//top = {.x = 0.0f, .y = 0.0f, .width = STC_CAST(float, w->width), .height = BLOCK_SIZE};
+Piece::Piece(){}
 Piece::Piece(Types::Piece tp){
     type = tp;
-    float x = 90.0f;//TODO: make this number random in a window area
+    speed = 200.0f;
+    float x = rand_on_grid();
     float y = 90.0f;//float is the same for init
     switch (type) {
         case Types::I:{
@@ -50,11 +44,25 @@ Piece::Piece(Types::Piece tp){
             break;
     }
 }
+float Piece::rand_on_grid(){
+    //660 window width
+    //all numbers in grid x go with, x += BLOCK_SIZE;
+    int cols = 600 / BLOCK_SIZE;               
+    float x = GetRandomValue(0, cols - 1) * BLOCK_SIZE;
+    return x;
+}
 void Piece::draw(){}
-void Piece::update_pos(){}
+void Piece::update_pos(float dt, Window *w){
+    for(int i = 0; i < 4; i++){
+        if(blocks[i].y > w->height - (BLOCK_SIZE * 2)){
+            speed = 0;
+        }
+        blocks[i].y += dt * speed;
+    }
+}
 void Piece::check_collision(){}
 void Piece::draw_blocks(){
     for(int i = 0; i < 4; i++){
-        DrawRectangleLinesEx(blocks[i], 1.0f, GREEN);
+        DrawRectangleRec(blocks[i], GREEN);
     }
 }
