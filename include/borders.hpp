@@ -1,13 +1,13 @@
 #ifndef BORDERS_H
 #define BORDERS_H
 
+#include "window.hpp"
 #include <raylib.h>
-constexpr const char* TITLE = "Tetris";
-constexpr const int W_WIDTH = 600;
-constexpr const int W_HEIGHT = 900;
+
+#define STC_CAST(t, arg) static_cast<t>((arg))
 
 struct Borders{
-    Borders();
+    Borders(Window *w);
     Rectangle top;
     Rectangle bottom;
     Rectangle left;

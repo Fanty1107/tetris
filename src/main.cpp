@@ -1,8 +1,9 @@
+#include "../include/window.hpp"
 #include "../include/borders.hpp"
 
 int main(){
-    InitWindow(W_WIDTH, W_HEIGHT, TITLE);
-    Borders borders; 
+    Window w = Window(600,900,"Tetris");
+    Borders borders = Borders(&w); 
 
     while(!WindowShouldClose()){
     BeginDrawing();
@@ -10,6 +11,5 @@ int main(){
         borders.draw();
     EndDrawing();
     }
-    CloseWindow();
     return 0;
 }
