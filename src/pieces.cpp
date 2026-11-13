@@ -1,4 +1,4 @@
-#include "../include/blocks.hpp"
+#include "../include/pieces.hpp"
 
 // Window is 650x900 all borders are 50px
 // 600x850 for the actual game

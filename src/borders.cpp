@@ -1,4 +1,4 @@
-#include "../include/blocks.hpp"
+#include "../include/pieces.hpp"
 #include "../include/borders.hpp"
 
 Borders::Borders(Window *w) {
