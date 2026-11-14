@@ -13,6 +13,7 @@ struct Game{
     Game();
     Game(Window *w, Borders *b, std::vector<Piece> *p);
     void spawn_pieces();
+    void check_collision();
 };
 
 #endif//GAME_HPP

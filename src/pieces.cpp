@@ -66,13 +66,54 @@ Piece::Piece(Types::Piece tp) {
 		}
 		break;
 	}
-	case Types::S:
+	case Types::S:{
+                for(int i = 0; i < 4; i++){
+                switch (i) {
+			case 0:
+				blocks[i] = {x, y, BLOCK_SIZE, BLOCK_SIZE};
+				x -= BLOCK_SIZE;
+				break;
+			case 1:
+				blocks[i] = {x, y, BLOCK_SIZE, BLOCK_SIZE};
+				y += BLOCK_SIZE;
+				break;
+			case 2:
+				blocks[i] = {x, y, BLOCK_SIZE, BLOCK_SIZE};
+				x -= BLOCK_SIZE;
+				break;
+			case 3:
+				blocks[i] = {x, y, BLOCK_SIZE, BLOCK_SIZE};
+				break;
+			}
+                }
 		break;
-	case Types::T:
+            }
+	case Types::T:{
+                for(int i = 0; i < 4; i++){
+                switch (i) {
+			case 0:
+				blocks[i] = {x, y, BLOCK_SIZE, BLOCK_SIZE};
+				x += BLOCK_SIZE;
+				break;
+			case 1:
+				blocks[i] = {x, y, BLOCK_SIZE, BLOCK_SIZE};
+				y -= BLOCK_SIZE;
+				break;
+			case 2:
+				blocks[i] = {x, y, BLOCK_SIZE, BLOCK_SIZE};
+                        y += BLOCK_SIZE;
+				x += BLOCK_SIZE;
+				break;
+			case 3:
+				blocks[i] = {x, y, BLOCK_SIZE, BLOCK_SIZE};
+				break;
+			}
 		break;
+            }
 	case Types::Z:
 		break;
 	}
+    }
 }
 float Piece::rand_on_grid() {
 	// 660 window width
@@ -94,4 +135,3 @@ void Piece::draw_blocks() {
 		DrawRectangleRec(blocks[i], GREEN);
 	}
 }
-void Piece::check_collision() {}

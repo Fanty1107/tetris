@@ -29,7 +29,6 @@ struct Piece{
     void draw_blocks();
     float rand_on_grid();
     void update_pos(float dt, Window *w);
-    void check_collision();
 };
 
 #endif//BLOCKS_H
