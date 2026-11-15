@@ -1,9 +1,8 @@
 #include "../include/pieces.hpp"
-//#define DEBUG  activate for more speed
 Piece::Piece() {}
 Piece::Piece(Types::Piece tp) {
 	speed	= 200.0f;
-    #ifdef DEBUG 
+    #ifdef DEBUG // check the header file for this flag 
     speed = 800.0f;
     #endif
 	type	= tp;
