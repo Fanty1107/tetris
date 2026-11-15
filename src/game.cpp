@@ -1,4 +1,4 @@
-#include "../include/game.hpp"
+#include "game.hpp"
 #include <cstddef>
 
 Game::Game(Window *w, Borders *b, std::vector<Piece> *p){

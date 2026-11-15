@@ -1,5 +1,5 @@
-#include "../include/pieces.hpp"
-#include "../include/window.hpp"
+#include "pieces.hpp"
+#include "window.hpp"
 
 Window::Window(int w, int h, const char *t) {
 	width = w, height = h, title = t;

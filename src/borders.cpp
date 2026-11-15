@@ -1,5 +1,5 @@
-#include "../include/pieces.hpp"
-#include "../include/borders.hpp"
+#include "pieces.hpp"
+#include "borders.hpp"
 
 Borders::Borders(Window *w) {
 	top	 = {.x = 0.0f, .y = 0.0f, .width = STC_CAST(float, w->width), .height = BLOCK_SIZE};

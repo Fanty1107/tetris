@@ -1,4 +1,4 @@
-#include "../include/pieces.hpp"
+#include "pieces.hpp"
 Piece::Piece() {}
 Piece::Piece(Types::Piece tp) {
 	speed	= 200.0f;
