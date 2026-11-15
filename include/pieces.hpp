@@ -24,6 +24,8 @@ struct Piece{
     Rectangle blocks[4];
     Types::Piece type;
     float speed;
+    bool isDown;
+    bool spawn_more;
 
     void draw();
     void draw_blocks();

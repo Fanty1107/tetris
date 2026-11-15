@@ -12,6 +12,7 @@ struct Game{
 
     Game();
     Game(Window *w, Borders *b, std::vector<Piece> *p);
+    Types::Piece get_random_type();
     void spawn_pieces();
     void check_collision();
 };

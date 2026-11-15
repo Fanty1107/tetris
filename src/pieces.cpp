@@ -8,6 +8,8 @@ Piece::Piece() {}
 Piece::Piece(Types::Piece tp) {
 	type	= tp;
 	speed	= 200.0f;
+      isDown = false;
+      spawn_more = false;
 	float x = rand_on_grid();
 	float y = 90.0f; // float is the same for init
 	switch (type) {
@@ -125,6 +127,7 @@ float Piece::rand_on_grid() {
 void Piece::update_pos(float dt, Window *w) {
 	for (int i = 0; i < 4; i++) {
 		if (blocks[i].y > (float)w->height - (BLOCK_SIZE * 2)) {
+                  isDown = true;  
 			speed = 0;
 		}
 		blocks[i].y += dt * speed;

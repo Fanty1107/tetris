@@ -1,4 +1,5 @@
 #include "../include/game.hpp"
+#include <cstddef>
 
 Game::Game(Window *w, Borders *b, std::vector<Piece> *p){
     win = w;
@@ -12,7 +13,6 @@ void Game::check_collision()
         return;
     }
 
-    // Compara cada par apenas uma vez.
     for (std::size_t i = 0; i < pic->size(); ++i) {
         for (std::size_t j = i + 1; j < pic->size(); ++j) {
             bool collided = false;
@@ -30,7 +30,43 @@ void Game::check_collision()
             }
             if (collided) {
                 pic->at(j).speed = 0;
+                pic->at(j).isDown = true;
             }
         }
     }
+}
+
+Types::Piece Game::get_random_type(){
+    int idx = GetRandomValue(0, 6);
+    switch (idx) {
+        case 0: return Types::I;
+            break;
+        case 1: return Types::J;
+            break;
+        case 2: return Types::L;
+            break;
+        case 3: return Types::O;
+            break;
+        case 4: return Types::S;
+            break;
+//      case 5: return Types::T;
+//          break;
+//      case 6: return Types::Z;
+//          break;
+        default: return Types::I;
+            break;
+    }
+}
+void Game::spawn_pieces(){
+    if(pic->empty()){
+        pic->push_back(Piece(get_random_type())); 
+        return;
+    }
+    for(std::size_t i = 0; i < pic->size(); ++i){
+        if(pic->at(i).isDown && !pic->at(i).spawn_more){
+           pic->at(i).spawn_more = true;
+           pic->push_back(Piece(get_random_type())); 
+           return;
+        } 
+    }  
 }
