@@ -5,6 +5,7 @@
 #include <raylib.h>
 
 constexpr float BLOCK_SIZE = 30;
+#define DEBUG
 
 namespace Types{
     enum Piece{

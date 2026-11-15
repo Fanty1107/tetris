@@ -1,13 +1,12 @@
 #include "../include/pieces.hpp"
-
-// Window is 650x900 all borders are 50px
-// 600x850 for the actual game
-// each piece is 30
-// top = {.x = 0.0f, .y = 0.0f, .width = STC_CAST(float, w->width), .height = BLOCK_SIZE};
+//#define DEBUG  activate for more speed
 Piece::Piece() {}
 Piece::Piece(Types::Piece tp) {
-	type	= tp;
 	speed	= 200.0f;
+    #ifdef DEBUG 
+    speed = 800.0f;
+    #endif
+	type	= tp;
       isDown = false;
       spawn_more = false;
 	float x = rand_on_grid();

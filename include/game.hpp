@@ -5,6 +5,7 @@
 #include "borders.hpp"
 #include "window.hpp"
 
+
 struct Game{
     Window *win;
     Borders *bor;
