@@ -131,6 +131,20 @@ void Piece::update_pos(float dt, Window *w) {
 		blocks[i].y += dt * speed;
 	}
 }
+void Piece::move_piece(float dt, Window *w){
+    if(IsKeyPressed(KEY_D) && !isDown){
+        for(auto& block : blocks)
+        {
+            block.x += BLOCK_SIZE;    
+        } 
+    }
+    if(IsKeyPressed(KEY_A) && !isDown){
+        for(auto& block : blocks)
+        {
+            block.x -= BLOCK_SIZE;    
+        } 
+    }
+}
 void Piece::draw_blocks() {
 	for (int i = 0; i < 4; i++) {
 		DrawRectangleRec(blocks[i], GREEN);

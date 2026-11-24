@@ -70,3 +70,16 @@ void Game::spawn_pieces(){
         } 
     }  
 }
+void Game::get_user_input(float dt){
+    if(pic->empty()){
+        return;
+    }
+    for(auto& piece : *pic){
+       piece.move_piece(dt, win); 
+    }
+}
+bool Game::check_destroy_line(std::vector<Rectangle>& colliders){
+
+
+    return false;
+}

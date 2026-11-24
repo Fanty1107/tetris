@@ -32,6 +32,7 @@ struct Piece{
     void draw_blocks();
     float rand_on_grid();
     void update_pos(float dt, Window *w);
+    void move_piece(float dt, Window *w);
 };
 
 #endif//BLOCKS_H

@@ -8,13 +8,14 @@ int main() {
 	Borders borders = Borders(&win);
       std::vector<Piece> pieces;
       Game tetris = Game(&win, &borders, &pieces);
-//      pieces.push_back(Piece(tetris.get_random_type()));
+      std::vector<Rectangle> colliders = win.make_col_grid();
 
 	while (!WindowShouldClose()) {
           //Game loop
 		float dt = GetFrameTime();
 		BeginDrawing();
 		ClearBackground(BLACK);
+            tetris.get_user_input(dt);
 		borders.draw();
             tetris.check_collision();
             tetris.spawn_pieces();
@@ -22,7 +23,8 @@ int main() {
                 piece.update_pos(dt, &win);
                 piece.draw_blocks();
             }
-		win.draw_grid();
+            win.draw_col_grid(colliders);
+		//win.draw_grid();
 		EndDrawing();
 	}
 	return 0;

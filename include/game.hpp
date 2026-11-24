@@ -16,6 +16,8 @@ struct Game{
     Types::Piece get_random_type();
     void spawn_pieces();
     void check_collision();
+    void get_user_input(float dt);
+    bool check_destroy_line(std::vector<Rectangle>& colliders);
 };
 
 #endif//GAME_HPP
