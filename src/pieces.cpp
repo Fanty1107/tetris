@@ -8,6 +8,8 @@ Piece::Piece(Types::Piece tp) {
 	type	= tp;
       isDown = false;
       spawn_more = false;
+      isMove = true;
+      clr = GREEN;
 	float x = rand_on_grid();
 	float y = 90.0f; // float is the same for init
 	switch (type) {
@@ -126,19 +128,20 @@ void Piece::update_pos(float dt, Window *w) {
 	for (int i = 0; i < 4; i++) {
 		if (blocks[i].y > (float)w->height - (BLOCK_SIZE * 2)) {
                   isDown = true;  
+                  isMove = false;
 			speed = 0;
 		}
 		blocks[i].y += dt * speed;
 	}
 }
 void Piece::move_piece(float dt, Window *w){
-    if(IsKeyPressed(KEY_D) && !isDown){
+    if((IsKeyPressed(KEY_D) && !isDown) || (IsKeyPressed(KEY_RIGHT) && !isDown)){
         for(auto& block : blocks)
         {
             block.x += BLOCK_SIZE;    
         } 
     }
-    if(IsKeyPressed(KEY_A) && !isDown){
+    if(IsKeyPressed(KEY_A) && !isDown  || (IsKeyPressed(KEY_LEFT) && !isDown)){
         for(auto& block : blocks)
         {
             block.x -= BLOCK_SIZE;    
@@ -147,6 +150,6 @@ void Piece::move_piece(float dt, Window *w){
 }
 void Piece::draw_blocks() {
 	for (int i = 0; i < 4; i++) {
-		DrawRectangleRec(blocks[i], GREEN);
+		DrawRectangleRec(blocks[i], clr);
 	}
 }

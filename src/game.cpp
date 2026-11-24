@@ -12,9 +12,8 @@ void Game::check_collision()
     if (pic == nullptr) {
         return;
     }
-
-    for (std::size_t i = 0; i < pic->size(); ++i) {
-        for (std::size_t j = i + 1; j < pic->size(); ++j) {
+    for (size_t i = 0; i < pic->size(); ++i) {
+        for (size_t j = i + 1; j < pic->size(); ++j) {
             bool collided = false;
 
             for (const Rectangle& blockA : (*pic)[i].blocks) {
@@ -79,7 +78,34 @@ void Game::get_user_input(float dt){
     }
 }
 bool Game::check_destroy_line(std::vector<Rectangle>& colliders){
+    const int rows = win->height / BLOCK_SIZE;
+    const int cols = win->width / BLOCK_SIZE;
+    for(int row = rows - 1; row >= 0; --row){
+        int filled = 0;
+        float lineY = row * BLOCK_SIZE;
+        for (const Piece& piece : *pic) {
+            if (!piece.isDown) continue;
 
+            for (const Rectangle& block : piece.blocks) {
+                if (block.y == lineY) {
+                    ++filled;
+                }
+            }
+        }
+        if(filled != cols) continue;
 
+        for(Piece& piece : *pic){
+            if(!piece.isDown) continue;
+            for(Rectangle& block : piece.blocks){
+                if(block.y == lineY){
+                    block.width = 0;
+                    block.height = 0;
+                }else if(block.y < lineY){
+                    block.y += BLOCK_SIZE;
+                }
+            }
+        }
+        return true;
+    }
     return false;
 }

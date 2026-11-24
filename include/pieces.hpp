@@ -5,7 +5,7 @@
 #include <raylib.h>
 
 constexpr float BLOCK_SIZE = 30;
-#define DEBUG
+//#define DEBUG
 
 namespace Types{
     enum Piece{
@@ -23,9 +23,11 @@ struct Piece{
     Piece();
     Piece(Types::Piece tp);
     Rectangle blocks[4];
+    Color clr;
     Types::Piece type;
     float speed;
     bool isDown;
+    bool isMove;
     bool spawn_more;
 
     void draw();

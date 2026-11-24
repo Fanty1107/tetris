@@ -1,6 +1,4 @@
 #include "game.hpp"
-#include <raylib.h>
-#include <vector>
 
 int main() {
     //init game obj
@@ -16,6 +14,7 @@ int main() {
 		BeginDrawing();
 		ClearBackground(BLACK);
             tetris.get_user_input(dt);
+            tetris.check_destroy_line(colliders);
 		borders.draw();
             tetris.check_collision();
             tetris.spawn_pieces();
